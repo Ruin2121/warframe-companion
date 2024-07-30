@@ -1,9 +1,13 @@
 from __future__ import annotations
-
+from decimal import Decimal
 from warframe_companion.src.base_classes.attack_handler import AttackHandler
-from warframe_companion.src.base_classes.final_weapon_stats_handler import FinalWeaponStatsHandler
+from warframe_companion.src.base_classes.final_weapon_stats_handler import (
+    FinalWeaponStatsHandler,
+)
 from warframe_companion.src.base_classes.item import Item
-from warframe_companion.src.base_classes.weapon_upgrades_handler import WeaponUpgradesHandler
+from warframe_companion.src.base_classes.weapon_upgrades_handler import (
+    WeaponUpgradesHandler,
+)
 from warframe_companion.src.enumerations import CompatibilityTags, MasteryRanks, Weapons
 
 
@@ -17,9 +21,9 @@ class Weapon(Item):
         self._base_max_ammo_count: int
         self._base_ammo_pickup_amount: int
         self._ammo_type: CompatibilityTags
-        self._riven_disposition: float
+        self._riven_disposition: Decimal
         self._base_magazine_size: int
-        self._reload_time: float
+        self._reload_time: Decimal
         self._compatibility_tags: list[CompatibilityTags] = []
         self._riven_family: Weapons
         self._variants: list[Weapon] = []
@@ -28,7 +32,7 @@ class Weapon(Item):
 
         self._incarnon_form: Weapon | None = None
 
-        self._final_stats: FinalWeaponStatsHandler = FinalWeaponStatsHandler(self)
+        self._final_stats: FinalWeaponStatsHandler
 
     @property
     def mod_type(self) -> CompatibilityTags:
@@ -59,7 +63,7 @@ class Weapon(Item):
         return self._ammo_type
 
     @property
-    def riven_disposition(self) -> float:
+    def riven_disposition(self) -> Decimal:
         return self._riven_disposition
 
     @property
@@ -67,7 +71,7 @@ class Weapon(Item):
         return self._base_magazine_size
 
     @property
-    def reload_time(self) -> float:
+    def reload_time(self) -> Decimal:
         return self._reload_time
 
     @property
