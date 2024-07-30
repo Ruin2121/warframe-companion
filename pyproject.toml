@@ -1,0 +1,23 @@
+[project]
+requires-python = ">=3.12"
+
+[tool.poetry]
+name = "warframe-companion"
+version = "0.1.0"
+description = "Warframe Companion Command Line Application"
+authors = ["Christopher (Ruin21) <118554907+Ruin2121@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+cleo = "*"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"
+
+[tool.poetry.scripts]
+warframe-companion = "warframe_companion.app:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
