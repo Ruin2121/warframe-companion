@@ -1,3 +1,5 @@
 .venv/
 __pycache__/
 rebuild_storage/
+player_data/
+.vscode/
