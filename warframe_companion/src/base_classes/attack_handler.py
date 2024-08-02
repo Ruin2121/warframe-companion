@@ -29,6 +29,7 @@ class AttackHandler:
         punch_through: Decimal = Decimal("0.0"),
         burst_count: int = 0,
         burst_delay: Decimal = Decimal("0.0"),
+        spool_up_rate: int = 0,
         AoE_attack: AttackHandler | None = None,
     ) -> None:
         self._trigger_type: TriggerTypes = trigger_type  #
@@ -48,6 +49,7 @@ class AttackHandler:
         self._base_status_chance: Decimal = status_chance  #
         self._burst_count: int = burst_count  #
         self._burst_delay: Decimal = burst_delay  #
+        self._spool_up_rate: int = spool_up_rate  #
         self._AoE_attack: AttackHandler | None = AoE_attack  #
 
     @property
@@ -253,3 +255,13 @@ class AttackHandler:
             Decimal: The burst delay of the weapon.
         """
         return self._burst_delay
+
+    @property
+    def spool_up_rate(self) -> int:
+        """
+        Returns the spool up rate of the weapon.
+
+        Returns:
+            int: The spool up rate of the weapon.
+        """
+        return self._spool_up_rate

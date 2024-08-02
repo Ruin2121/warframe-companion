@@ -36,7 +36,8 @@ class FinalWeaponStatsHandler:
 
     @property
     def effective_fire_rate(self) -> D:
-        if self.attack_handler.trigger_type == TriggerTypes.AUTO:
+        # We are assuming that Auto-Spool weapons are fully spooled
+        if self.attack_handler.trigger_type == TriggerTypes.AUTO or TriggerTypes.AUTO_SPOOL:
             return self.final_fire_rate
 
         elif self.attack_handler.trigger_type == TriggerTypes.BURST:

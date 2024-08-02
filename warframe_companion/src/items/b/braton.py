@@ -36,7 +36,7 @@ class Braton(Weapon):
         self._ammo_type = CompatibilityTags.PRIMARY
         self._riven_disposition = D("1.35")
         self._base_magazine_size: int = 45
-        self._reload_time: float = 2.0
+        self._reload_time: D = D("2.0")
         self._compatibility_tags = [
             CompatibilityTags.ASSAULT_AMMO,
         ]
