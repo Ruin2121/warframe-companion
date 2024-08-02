@@ -12,3 +12,4 @@ class Weapons(Enum):
     GORGON = "Gorgon"
     LATRON = "Latron"
     SNIPETRON = "Snipetron"
+    STRUN = "Strun"
