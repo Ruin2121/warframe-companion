@@ -82,29 +82,17 @@ if __name__ == "__main__":
     print(braton.final_stats.quantized_damage_no_armor)
     print("---------------------------------------------------")
     print(f"Arsenal Total Damage: {braton.final_stats.arsenal_total_damage}")
-    print(
-        f"Real Total Damage (no armor): {braton.final_stats.real_total_damage_no_armor}"
-    )
-    print(
-        f"Real Total Damage (max armor): {braton.final_stats.real_total_damage_max_armor}"
-    )
+    print(f"Real Total Damage (no armor): {braton.final_stats.real_total_damage_no_armor}")
+    print(f"Real Total Damage (max armor): {braton.final_stats.real_total_damage_max_armor}")
     print("---------------------------------------------------")
     print(f"Arsenal Average Hit: {braton.final_stats.arsenal_average_hit}")
-    print(
-        f"Real Average Hit (no armor): {braton.final_stats.real_average_hit_no_armor}"
-    )
-    print(
-        f"Real Average Hit (max armor): {braton.final_stats.real_average_hit_max_armor}"
-    )
+    print(f"Real Average Hit (no armor): {braton.final_stats.real_average_hit_no_armor}")
+    print(f"Real Average Hit (max armor): {braton.final_stats.real_average_hit_max_armor}")
     print("---------------------------------------------------")
     print(f"Arsenal Burst DPS: {braton.final_stats.arsenal_burst_dps}")
     print(f"Real Burst DPS (no armor): {braton.final_stats.real_burst_dps_no_armor}")
     print(f"Real Burst DPS (max armor): {braton.final_stats.real_burst_dps_max_armor}")
     print("---------------------------------------------------")
     print(f"Arsenal Sustained DPS: {braton.final_stats.arsenal_sustained_dps}")
-    print(
-        f"Real Sustained DPS (no armor): {braton.final_stats.real_sustained_dps_no_armor}"
-    )
-    print(
-        f"Real Sustained DPS (max armor): {braton.final_stats.real_sustained_dps_max_armor}"
-    )
+    print(f"Real Sustained DPS (no armor): {braton.final_stats.real_sustained_dps_no_armor}")
+    print(f"Real Sustained DPS (max armor): {braton.final_stats.real_sustained_dps_max_armor}")
