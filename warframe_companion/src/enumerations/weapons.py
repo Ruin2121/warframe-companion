@@ -10,3 +10,4 @@ class Weapons(Enum):
     BRATON = "Braton"
     BURSTON = "Burston"
     GORGON = "Gorgon"
+    LATRON = "Latron"
