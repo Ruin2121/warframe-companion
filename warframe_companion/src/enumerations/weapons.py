@@ -7,3 +7,4 @@ class Weapons(Enum):
     """
 
     BRATON = "Braton"
+    BURSTON = "Burston"

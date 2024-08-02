@@ -39,6 +39,13 @@ class FinalWeaponStatsHandler:
         if self.attack_handler.trigger_type == TriggerTypes.AUTO:
             return self.final_fire_rate
 
+        elif self.attack_handler.trigger_type == TriggerTypes.BURST:
+            burst_count = self.attack_handler.burst_count
+            burst_delay = self.attack_handler.burst_delay
+            fire_rate = self.final_fire_rate
+
+            return burst_count / ((1 / fire_rate) + ((burst_count - 1) * burst_delay))
+
         else:
             return D("0")
 
@@ -60,121 +67,74 @@ class FinalWeaponStatsHandler:
     def proportion_time_spent_shooting_vs_reloading(self) -> D:
         # TODO: Check if this is correct
         return self.num_shots_per_mag / (
-            D(self.effective_fire_rate) * D(self.final_reload_time)
-            + self.num_shots_per_mag
+            D(self.effective_fire_rate) * D(self.final_reload_time) + self.num_shots_per_mag
         )
 
     @property
     def quantized_impact(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_impact / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_impact / self.quantum).to_integral_exact()
 
     @property
     def quantized_puncture(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_puncture / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_puncture / self.quantum).to_integral_exact()
 
     @property
     def quantized_slash(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_slash / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_slash / self.quantum).to_integral_exact()
 
     @property
     def quantized_cold(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_cold / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_cold / self.quantum).to_integral_exact()
 
     @property
     def quantized_electricity(self) -> D:
         return (
-            self.quantum
-            * (self.base_damage.damage_electricity / self.quantum).to_integral_exact()
+            self.quantum * (self.base_damage.damage_electricity / self.quantum).to_integral_exact()
         )
 
     @property
     def quantized_heat(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_heat / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_heat / self.quantum).to_integral_exact()
 
     @property
     def quantized_toxin(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_toxin / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_toxin / self.quantum).to_integral_exact()
 
     @property
     def quantized_blast(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_blast / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_blast / self.quantum).to_integral_exact()
 
     @property
     def quantized_corrosive(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_corrosive / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_corrosive / self.quantum).to_integral_exact()
 
     @property
     def quantized_gas(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_gas / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_gas / self.quantum).to_integral_exact()
 
     @property
     def quantized_magnetic(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_magnetic / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_magnetic / self.quantum).to_integral_exact()
 
     @property
     def quantized_radiation(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_radiation / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_radiation / self.quantum).to_integral_exact()
 
     @property
     def quantized_viral(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_viral / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_viral / self.quantum).to_integral_exact()
 
     @property
     def quantized_tau(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_tau / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_tau / self.quantum).to_integral_exact()
 
     @property
     def quantized_void(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_void / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_void / self.quantum).to_integral_exact()
 
     @property
     def quantized_true(self) -> D:
-        return (
-            self.quantum
-            * (self.base_damage.damage_true / self.quantum).to_integral_exact()
-        )
+        return self.quantum * (self.base_damage.damage_true / self.quantum).to_integral_exact()
 
     @property
     def quantized_damage_no_armor(self) -> DamageInstance:
@@ -390,32 +350,26 @@ class FinalWeaponStatsHandler:
 
     @property
     def real_burst_dps_no_armor(self) -> D:
-        return (self.real_average_hit_no_armor * self.effective_fire_rate).quantize(
-            D("1.00")
-        )
+        return (self.real_average_hit_no_armor * self.effective_fire_rate).quantize(D("1.00"))
 
     @property
     def real_burst_dps_max_armor(self) -> D:
-        return (self.real_average_hit_max_armor * self.effective_fire_rate).quantize(
-            D("1.00")
-        )
+        return (self.real_average_hit_max_armor * self.effective_fire_rate).quantize(D("1.00"))
 
     @property
     def arsenal_sustained_dps(self) -> D:
-        return (
-            self.arsenal_burst_dps * self.proportion_time_spent_shooting_vs_reloading
-        ).quantize(D("1.00"))
+        return (self.arsenal_burst_dps * self.proportion_time_spent_shooting_vs_reloading).quantize(
+            D("1.00")
+        )
 
     @property
     def real_sustained_dps_no_armor(self) -> D:
         return (
-            self.real_burst_dps_no_armor
-            * self.proportion_time_spent_shooting_vs_reloading
+            self.real_burst_dps_no_armor * self.proportion_time_spent_shooting_vs_reloading
         ).quantize(D("1.00"))
 
     @property
     def real_sustained_dps_max_armor(self) -> D:
         return (
-            self.real_burst_dps_max_armor
-            * self.proportion_time_spent_shooting_vs_reloading
+            self.real_burst_dps_max_armor * self.proportion_time_spent_shooting_vs_reloading
         ).quantize(D("1.00"))

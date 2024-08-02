@@ -27,6 +27,8 @@ class AttackHandler:
         maximum_spread: Decimal = Decimal("0.0"),
         ammo_cost: Decimal = Decimal("1.0"),
         punch_through: Decimal = Decimal("0.0"),
+        burst_count: int = 0,
+        burst_delay: Decimal = Decimal("0.0"),
         AoE_attack: AttackHandler | None = None,
     ) -> None:
         self._trigger_type: TriggerTypes = trigger_type  #
@@ -44,6 +46,8 @@ class AttackHandler:
         self._base_punch_through: Decimal = punch_through  #
         self._base_range: Decimal = range  #
         self._base_status_chance: Decimal = status_chance  #
+        self._burst_count: int = burst_count  #
+        self._burst_delay: Decimal = burst_delay  #
         self._AoE_attack: AttackHandler | None = AoE_attack  #
 
     @property
@@ -229,3 +233,23 @@ class AttackHandler:
             DamageInstance: The base damage of the weapon.
         """
         return self._base_damage
+
+    @property
+    def burst_count(self) -> int:
+        """
+        Returns the burst count of the weapon.
+
+        Returns:
+            int: The burst count of the weapon.
+        """
+        return self._burst_count
+
+    @property
+    def burst_delay(self) -> Decimal:
+        """
+        Returns the burst delay of the weapon.
+
+        Returns:
+            Decimal: The burst delay of the weapon.
+        """
+        return self._burst_delay
