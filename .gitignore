@@ -3,3 +3,4 @@ __pycache__/
 rebuild_storage/
 player_data/
 .vscode/
+.ruff_cache/
