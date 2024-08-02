@@ -35,6 +35,11 @@ class FinalWeaponStatsHandler:
         return self.attack_handler.base_fire_rate
 
     @property
+    def final_multishot(self) -> D:
+        # TODO: Fix when mod support is added
+        return self.attack_handler.multishot
+
+    @property
     def effective_fire_rate(self) -> D:
         # We are assuming that Auto-Spool weapons are fully spooled
         if self.attack_handler.trigger_type == TriggerTypes.AUTO or TriggerTypes.AUTO_SPOOL:
@@ -335,15 +340,19 @@ class FinalWeaponStatsHandler:
 
     @property
     def arsenal_total_damage(self) -> D:
-        return self._weapon.attack_handler.base_damage.total_damage.to_integral_exact()
+        return (self.base_damage.total_damage * self.final_multishot).to_integral_exact()
 
     @property
     def real_total_damage_no_armor(self) -> D:
-        return self.quantized_damage_no_armor.total_damage.quantize(D("1.00"))
+        return (self.quantized_damage_no_armor.total_damage * self.final_multishot).quantize(
+            D("1.00")
+        )
 
     @property
     def real_total_damage_max_armor(self) -> D:
-        return self.quantized_damage_max_armor.total_damage.quantize(D("1.00"))
+        return (self.quantized_damage_max_armor.total_damage * self.final_multishot).quantize(
+            D("1.00")
+        )
 
     @property
     def arsenal_burst_dps(self) -> D:
