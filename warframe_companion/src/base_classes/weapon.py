@@ -24,6 +24,8 @@ class Weapon(Item):
         self._riven_disposition: Decimal
         self._base_magazine_size: int
         self._reload_time: Decimal
+        self._combo_decay: Decimal = Decimal("0.0")
+        self._min_combo: int = 0
         self._compatibility_tags: list[CompatibilityTags] = []
         self._riven_family: Weapons
         self._variants: list[Weapon] = []
@@ -101,3 +103,11 @@ class Weapon(Item):
     @property
     def final_stats(self) -> FinalWeaponStatsHandler:
         return self._final_stats
+
+    @property
+    def combo_decay(self) -> Decimal:
+        return self._combo_decay
+
+    @property
+    def min_combo(self) -> int:
+        return self._min_combo
