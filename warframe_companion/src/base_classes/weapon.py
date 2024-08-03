@@ -24,13 +24,13 @@ class Weapon(Item):
         self._riven_disposition: Decimal
         self._base_magazine_size: int
         self._reload_time: Decimal
+        self._combo_decay: Decimal = Decimal("0.0")
+        self._min_combo: int = 0
         self._compatibility_tags: list[CompatibilityTags] = []
         self._riven_family: Weapons
         self._variants: list[Weapon] = []
         self._attack_handler: AttackHandler
         self._weapon_upgrades_handler: WeaponUpgradesHandler = WeaponUpgradesHandler()
-
-        self._incarnon_form: Weapon | None = None
 
         self._final_stats: FinalWeaponStatsHandler
 
@@ -95,9 +95,13 @@ class Weapon(Item):
         return self._weapon_upgrades_handler
 
     @property
-    def incarnon_form(self) -> Weapon | None:
-        return self._incarnon_form
-
-    @property
     def final_stats(self) -> FinalWeaponStatsHandler:
         return self._final_stats
+
+    @property
+    def combo_decay(self) -> Decimal:
+        return self._combo_decay
+
+    @property
+    def min_combo(self) -> int:
+        return self._min_combo

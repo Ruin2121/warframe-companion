@@ -3,6 +3,7 @@ from enum import Enum
 
 class TriggerTypes(Enum):
     AUTO = "Auto"
+    AUTO_SPOOL = "Auto-Spool"
     SEMI = "Semi"
     BURST = "Burst"
     AUTO_BURST = "Auto-Burst"
@@ -19,9 +20,7 @@ class TriggerTypes(Enum):
     CHARGE_FULL_INSTANT = "Charge | Full Quickshot | Instant Auto-Release"
     CHARGE_HALF_INSTANT = "Charge | Half Quickshot | Instant Auto-Release"
     CHARGE_NO_INSTANT = "Charge | No Quickshot | Instant Auto-Release"
-    CHARGE_NO_INSTANT_AUTO = (
-        "Charge | No Quickshot | Instant Auto-Release and Auto Trigger"
-    )
+    CHARGE_NO_INSTANT_AUTO = "Charge | No Quickshot | Instant Auto-Release and Auto Trigger"
     CHARGE_AUTO_INSTANT = "Charge | Autocharge | Instant Auto-Release"
     CHARGE_AUTO_INDEF = "Charge | Autocharge | Indefinite Hold"
     CHARGE_AUTOQS_INSTANT = "Charge | Autocharged Quickshot | Instant Auto-Release"

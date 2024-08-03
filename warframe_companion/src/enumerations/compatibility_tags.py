@@ -20,6 +20,7 @@ class CompatibilityTags(Enum):
     SPEARGUN = "Speargun"
     SECONDARY = "Secondary"
     PISTOL = "Pistol"
+    DUAL_PISTOLS = "Dual Pistols"
     THROWN = "Thrown"
     TOME = "Tome"
     MELEE = "Melee"
@@ -66,3 +67,5 @@ class CompatibilityTags(Enum):
 
     # True Compatibility Tags
     ASSAULT_AMMO = "Assault Ammo"
+    SNIPER_AMMO = "Sniper Ammo"
+    PROJECTILE = "Projectile"
