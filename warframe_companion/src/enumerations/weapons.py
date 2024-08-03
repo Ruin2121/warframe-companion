@@ -20,3 +20,4 @@ class Weapons(Enum):
     LATO = "Lato"
     LEX = "Lex"
     BRONCO = "Bronco"
+    SICARUS = "Sicarus"
