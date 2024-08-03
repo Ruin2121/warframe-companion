@@ -11,6 +11,7 @@ class CompatibilityTags(Enum):
     PRIMARY = "Primary"
     RIFLE = "Rifle"
     SHOTGUN = "Shotgun"
+    SHOTGUN_SIDEARM = "Shotgun Sidearm"
     ASSAULT_RIFLE = "Assault Rifle"
     BOW = "Bow"
     SNIPER = "Sniper"
@@ -69,3 +70,5 @@ class CompatibilityTags(Enum):
     ASSAULT_AMMO = "Assault Ammo"
     SNIPER_AMMO = "Sniper Ammo"
     PROJECTILE = "Projectile"
+    SINGLESHOT = "Single Shot"
+    SECONDARYSHOTGUN = "Secondary Shotgun"

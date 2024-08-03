@@ -19,3 +19,4 @@ class Weapons(Enum):
     FURIS = "Furis"
     LATO = "Lato"
     LEX = "Lex"
+    BRONCO = "Bronco"

@@ -362,15 +362,27 @@ class FinalWeaponStatsHandler:
 
     @property
     def arsenal_burst_dps(self) -> D:
-        return (self.arsenal_average_hit * self.effective_fire_rate).quantize(D("1.00"))
+        # This solution is only accurate if we assume that you do not reload and fire another shot within the assumed one second burst
+        if self.num_shots_per_mag >= self.effective_fire_rate:
+            return (self.arsenal_average_hit * self.effective_fire_rate).quantize(D("1.00"))
+        else:
+            return (self.arsenal_average_hit * self.num_shots_per_mag).quantize(D("1.00"))
 
     @property
     def real_burst_dps_no_armor(self) -> D:
-        return (self.real_average_hit_no_armor * self.effective_fire_rate).quantize(D("1.00"))
+        # This solution is only accurate if we assume that you do not reload and fire another shot within the assumed one second burst
+        if self.num_shots_per_mag >= self.effective_fire_rate:
+            return (self.real_average_hit_no_armor * self.effective_fire_rate).quantize(D("1.00"))
+        else:
+            return (self.real_average_hit_no_armor * self.num_shots_per_mag).quantize(D("1.00"))
 
     @property
     def real_burst_dps_max_armor(self) -> D:
-        return (self.real_average_hit_max_armor * self.effective_fire_rate).quantize(D("1.00"))
+        # This solution is only accurate if we assume that you do not reload and fire another shot within the assumed one second burst
+        if self.num_shots_per_mag >= self.effective_fire_rate:
+            return (self.real_average_hit_max_armor * self.effective_fire_rate).quantize(D("1.00"))
+        else:
+            return (self.real_average_hit_max_armor * self.num_shots_per_mag).quantize(D("1.00"))
 
     @property
     def arsenal_sustained_dps(self) -> D:
