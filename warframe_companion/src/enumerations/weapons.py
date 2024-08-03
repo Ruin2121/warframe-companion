@@ -17,3 +17,4 @@ class Weapons(Enum):
     BOLTO = "Bolto"
     AKLATO = "Aklato"
     FURIS = "Furis"
+    LATO = "Lato"
