@@ -18,7 +18,6 @@ class AttackHandler:
         critical_chance: Decimal,
         critical_multiplier: Decimal,
         multishot: Decimal,
-        range: Decimal,
         status_chance: Decimal,
         damage: DamageInstance,
         #
@@ -27,9 +26,11 @@ class AttackHandler:
         maximum_spread: Decimal = Decimal("0.0"),
         ammo_cost: Decimal = Decimal("1.0"),
         punch_through: Decimal = Decimal("0.0"),
+        range: Decimal = Decimal("0.0"),
         burst_count: int = 0,
         burst_delay: Decimal = Decimal("0.0"),
         spool_up_rate: int = 0,
+        projectile_speed: Decimal = Decimal("0.0"),
         AoE_attack: AttackHandler | None = None,
     ) -> None:
         self._trigger_type: TriggerTypes = trigger_type  #
@@ -50,6 +51,7 @@ class AttackHandler:
         self._burst_count: int = burst_count  #
         self._burst_delay: Decimal = burst_delay  #
         self._spool_up_rate: int = spool_up_rate  #
+        self._projectile_speed: Decimal = projectile_speed  #
         self._AoE_attack: AttackHandler | None = AoE_attack  #
 
     @property
@@ -265,3 +267,13 @@ class AttackHandler:
             int: The spool up rate of the weapon.
         """
         return self._spool_up_rate
+
+    @property
+    def projectile_speed(self) -> Decimal:
+        """
+        Returns the projectile speed of the weapon.
+
+        Returns:
+            Decimal: The projectile speed of the weapon.
+        """
+        return self._projectile_speed

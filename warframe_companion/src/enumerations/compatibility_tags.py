@@ -67,3 +67,4 @@ class CompatibilityTags(Enum):
     # True Compatibility Tags
     ASSAULT_AMMO = "Assault Ammo"
     SNIPER_AMMO = "Sniper Ammo"
+    PROJECTILE = "Projectile"
