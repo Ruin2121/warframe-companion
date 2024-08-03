@@ -13,10 +13,12 @@ class WeaponUpgradesHandler:
         self._mod_slot_6: ModSlot = ModSlot()
         self._mod_slot_7: ModSlot = ModSlot()
         self._mod_slot_8: ModSlot = ModSlot()
+        self._mod_slot_stance: ModSlot = ModSlot()
         self._mod_slot_exilus: ModSlot = ModSlot()
         self._arcane_slot: ArcaneSlot = ArcaneSlot()
 
         self._mod_slot_exilus.slot_type = ModSlotTypes.EXILUS
+        self._mod_slot_stance.slot_type = ModSlotTypes.STANCE
 
     @property
     def mod_slot_1(self) -> ModSlot:
@@ -49,6 +51,10 @@ class WeaponUpgradesHandler:
     @property
     def mod_slot_8(self) -> ModSlot:
         return self._mod_slot_8
+
+    @property
+    def mod_slot_stance(self) -> ModSlot:
+        return self._mod_slot_stance
 
     @property
     def mod_slot_exilus(self) -> ModSlot:

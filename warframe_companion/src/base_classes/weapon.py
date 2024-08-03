@@ -21,11 +21,15 @@ class Weapon(Item):
         self._base_max_ammo_count: int
         self._base_ammo_pickup_amount: int
         self._ammo_type: CompatibilityTags
+        self._block_angle: Decimal = Decimal("0.0")
         self._riven_disposition: Decimal
-        self._base_magazine_size: int
-        self._reload_time: Decimal
+        self._base_magazine_size: int = 0
+        self._reload_time: Decimal = Decimal("0.0")
         self._combo_decay: Decimal = Decimal("0.0")
         self._min_combo: int = 0
+        self._combo_duration: Decimal = Decimal("0.0")
+        self._follow_through: Decimal = Decimal("0.0")
+        self._sweep_radius: Decimal = Decimal("0.0")
         self._compatibility_tags: list[CompatibilityTags] = []
         self._riven_family: Weapons
         self._variants: list[Weapon] = []
@@ -37,6 +41,22 @@ class Weapon(Item):
     @property
     def mod_type(self) -> CompatibilityTags:
         return self._mod_type
+
+    @property
+    def block_angle(self) -> Decimal:
+        return self._block_angle
+
+    @property
+    def combo_duration(self) -> Decimal:
+        return self._combo_duration
+
+    @property
+    def follow_through(self) -> Decimal:
+        return self._follow_through
+
+    @property
+    def sweep_radius(self) -> Decimal:
+        return self._sweep_radius
 
     @property
     def mastery_rank_requirement(self) -> MasteryRanks:

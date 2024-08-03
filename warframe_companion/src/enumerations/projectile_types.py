@@ -6,3 +6,5 @@ class ProjectileTypes(Enum):
     PROJECTILE = "Projectile"
     BEAM = "Beam"
     AOE = "AoE"
+
+    NA = "N/A"

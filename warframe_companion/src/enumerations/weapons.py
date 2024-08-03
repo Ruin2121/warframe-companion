@@ -21,3 +21,4 @@ class Weapons(Enum):
     LEX = "Lex"
     BRONCO = "Bronco"
     SICARUS = "Sicarus"
+    DUAL_SKANA = "Dual Skana"
