@@ -18,3 +18,4 @@ class Weapons(Enum):
     AKLATO = "Aklato"
     FURIS = "Furis"
     LATO = "Lato"
+    LEX = "Lex"
