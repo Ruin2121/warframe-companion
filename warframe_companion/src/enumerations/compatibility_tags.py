@@ -20,6 +20,7 @@ class CompatibilityTags(Enum):
     SPEARGUN = "Speargun"
     SECONDARY = "Secondary"
     PISTOL = "Pistol"
+    DUAL_PISTOLS = "Dual Pistols"
     THROWN = "Thrown"
     TOME = "Tome"
     MELEE = "Melee"
