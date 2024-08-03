@@ -27,10 +27,12 @@ def read_inventory_into_dict() -> None:
         json.dump(expected_inventory, f, indent=4)
 
     # Update INVENTORY
+    # Create a lookup dictionary for item enums
+    item_enum_lookup = {}
+    for item_enum in item_enums:
+        for item in item_enum:  # type: ignore
+            item_enum_lookup[item.value] = item
+
     for key in expected_inventory:
-        for item_enum in item_enums:
-            try:
-                enum_entry = item_enum(key)  # type: ignore
-                INVENTORY[enum_entry] = expected_inventory[key]
-            except ValueError:
-                continue
+        if key in item_enum_lookup:
+            INVENTORY[item_enum_lookup[key]] = expected_inventory[key]

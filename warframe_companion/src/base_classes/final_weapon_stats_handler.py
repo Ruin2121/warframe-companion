@@ -53,8 +53,10 @@ class FinalWeaponStatsHandler:
             burst_count = self.attack_handler.burst_count
             burst_delay = self.attack_handler.burst_delay
             fire_rate = self.final_fire_rate
-
-            return burst_count / ((1 / fire_rate) + ((burst_count - 1) * burst_delay))
+            try:
+                return burst_count / ((1 / fire_rate) + ((burst_count - 1) * burst_delay))
+            except ZeroDivisionError:
+                return D("0")
 
         else:
             return D("0")
