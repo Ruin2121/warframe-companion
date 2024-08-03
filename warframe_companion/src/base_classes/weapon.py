@@ -32,8 +32,6 @@ class Weapon(Item):
         self._attack_handler: AttackHandler
         self._weapon_upgrades_handler: WeaponUpgradesHandler = WeaponUpgradesHandler()
 
-        self._incarnon_form: Weapon | None = None
-
         self._final_stats: FinalWeaponStatsHandler
 
     @property
@@ -95,10 +93,6 @@ class Weapon(Item):
     @property
     def weapon_upgrades_handler(self) -> WeaponUpgradesHandler:
         return self._weapon_upgrades_handler
-
-    @property
-    def incarnon_form(self) -> Weapon | None:
-        return self._incarnon_form
 
     @property
     def final_stats(self) -> FinalWeaponStatsHandler:

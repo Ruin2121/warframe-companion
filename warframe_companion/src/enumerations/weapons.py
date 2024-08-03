@@ -13,3 +13,4 @@ class Weapons(Enum):
     LATRON = "Latron"
     SNIPETRON = "Snipetron"
     STRUN = "Strun"
+    MK1BRATON = "MK1-Braton"

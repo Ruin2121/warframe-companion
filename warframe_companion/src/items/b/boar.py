@@ -41,6 +41,7 @@ class Boar(Weapon):
         self._riven_family = Weapons.BOAR
         self._introduced_update = Updates.VANILLA
         self._sell_price = 7_500
+        # TODO: Add Incarnon form
         self._variants = [self]
 
         # Normal Attack
@@ -67,9 +68,6 @@ class Boar(Weapon):
         self._weapon_upgrades_handler.mod_slot_exilus.slot_polarity = Polarities.MADURAI
 
         self._final_stats = FinalWeaponStatsHandler(self)
-
-        # TODO: Add Incarnon Form
-        # self._incarnon_form =
 
 
 if __name__ == "__main__":
