@@ -16,3 +16,4 @@ class Weapons(Enum):
     MK1BRATON = "MK1-Braton"
     BOLTO = "Bolto"
     AKLATO = "Aklato"
+    FURIS = "Furis"
