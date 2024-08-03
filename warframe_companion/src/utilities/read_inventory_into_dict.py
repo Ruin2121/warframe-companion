@@ -36,3 +36,5 @@ def read_inventory_into_dict() -> None:
     for key in expected_inventory:
         if key in item_enum_lookup:
             INVENTORY[item_enum_lookup[key]] = expected_inventory[key]
+        else:
+            raise ValueError(f"unrecognized key: {key}")
