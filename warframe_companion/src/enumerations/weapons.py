@@ -24,3 +24,4 @@ class Weapons(Enum):
     DUAL_SKANA = "Dual Skana"
     FURAX = "Furax"
     SKANA = "Skana"
+    BO = "Bo"
