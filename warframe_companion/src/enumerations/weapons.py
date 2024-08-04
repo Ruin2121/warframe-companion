@@ -22,3 +22,4 @@ class Weapons(Enum):
     BRONCO = "Bronco"
     SICARUS = "Sicarus"
     DUAL_SKANA = "Dual Skana"
+    FURAX = "Furax"
