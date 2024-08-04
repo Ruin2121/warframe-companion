@@ -12,16 +12,17 @@ from warframe_companion.src.enumerations import (
 class AttackHandler:
     def __init__(
         self,
-        fire_rate: Decimal,
         noise_level: NoiseLevels,
-        projectile_type: ProjectileTypes,
         critical_chance: Decimal,
         critical_multiplier: Decimal,
-        multishot: Decimal,
         status_chance: Decimal,
         damage: DamageInstance,
         #
+        multishot: Decimal = Decimal("1.0"),
+        fire_rate: Decimal = Decimal("0.0"),
+        attack_speed: Decimal = Decimal("0.0"),
         trigger_type: TriggerTypes = TriggerTypes.UNKNOWN,
+        projectile_type: ProjectileTypes = ProjectileTypes.NA,
         minimum_spread: Decimal = Decimal("0.0"),
         maximum_spread: Decimal = Decimal("0.0"),
         ammo_cost: Decimal = Decimal("1.0"),
@@ -37,6 +38,7 @@ class AttackHandler:
         self._base_minimum_spread: Decimal = minimum_spread  #
         self._base_maximum_spread: Decimal = maximum_spread  #
         self._base_fire_rate: Decimal = fire_rate  #
+        self._attack_speed: Decimal = attack_speed  #
         self._base_noise_level: NoiseLevels = noise_level  #
         self._projectile_type: ProjectileTypes = projectile_type  #
         self._base_damage: DamageInstance = damage
@@ -127,6 +129,16 @@ class AttackHandler:
             float: The base fire rate of the weapon.
         """
         return self._base_fire_rate
+
+    @property
+    def base_attack_speed(self) -> Decimal:
+        """
+        Returns the attack speed of the weapon.
+
+        Returns:
+            float: The attack speed of the weapon.
+        """
+        return self._attack_speed
 
     @property
     def base_noise_level(self) -> NoiseLevels:

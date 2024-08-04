@@ -5,7 +5,7 @@ class Polarities(Enum):
     MADURAI = "Madurai"
     VAZARIN = "Vazarin"
     NARAMON = "Naramon"
-    ZENURIKI = "Zenurik"
+    ZENURIK = "Zenurik"
     UNAIRU = "Unairu"
     PENJAGA = "Penjaga"
     UMBRA = "Umbra"

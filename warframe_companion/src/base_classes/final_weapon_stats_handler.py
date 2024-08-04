@@ -3,6 +3,7 @@ from typing import TYPE_CHECKING
 from decimal import Decimal as D
 
 from warframe_companion.src.base_classes.damage_instance import DamageInstance
+from warframe_companion.src.enumerations.compatibility_tags import CompatibilityTags
 from warframe_companion.src.enumerations.trigger_types import TriggerTypes
 
 if TYPE_CHECKING:
@@ -74,6 +75,11 @@ class FinalWeaponStatsHandler:
     def final_reload_time(self) -> D:
         # TODO: Fix when mod support is added
         return self._weapon.reload_time
+
+    @property
+    def final_attack_speed(self) -> D:
+        # TODO: Fix when mod support is added
+        return self.attack_handler.base_attack_speed
 
     @property
     def proportion_time_spent_shooting_vs_reloading(self) -> D:
@@ -325,6 +331,7 @@ class FinalWeaponStatsHandler:
 
     @property
     def arsenal_average_hit(self) -> D:
+        # TODO: This does not include average combo damage multiplier for melee weapons, likely add this when mods are added.
         return (
             self.arsenal_total_damage
             * (1 + (self.final_critical_chance * (self.final_critical_multiplier - 1)))
@@ -332,6 +339,7 @@ class FinalWeaponStatsHandler:
 
     @property
     def real_average_hit_no_armor(self) -> D:
+        # TODO: This does not include average combo damage multiplier for melee weapons, likely add this when mods are added.
         return (
             self.real_total_damage_no_armor
             * (1 + (self.final_critical_chance * (self.final_critical_multiplier - 1)))
@@ -339,6 +347,7 @@ class FinalWeaponStatsHandler:
 
     @property
     def real_average_hit_max_armor(self) -> D:
+        # TODO: This does not include average combo damage multiplier for melee weapons, likely add this when mods are added.
         return (
             self.real_total_damage_max_armor
             * (1 + (self.final_critical_chance * (self.final_critical_multiplier - 1)))
@@ -362,30 +371,63 @@ class FinalWeaponStatsHandler:
 
     @property
     def arsenal_burst_dps(self) -> D:
-        return (self.arsenal_average_hit * self.effective_fire_rate).quantize(D("1.00"))
+        # This solution is only accurate if we assume that you do not reload and fire another shot within the assumed one second burst
+        # Melee weapons do not have burst DPS
+        if self._weapon.weapon_slot == CompatibilityTags.MELEE:
+            return D("0.00").quantize(D("1.00"))
+        if self.num_shots_per_mag >= self.effective_fire_rate:
+            return (self.arsenal_average_hit * self.effective_fire_rate).quantize(D("1.00"))
+        else:
+            return (self.arsenal_average_hit * self.num_shots_per_mag).quantize(D("1.00"))
 
     @property
     def real_burst_dps_no_armor(self) -> D:
-        return (self.real_average_hit_no_armor * self.effective_fire_rate).quantize(D("1.00"))
+        # This solution is only accurate if we assume that you do not reload and fire another shot within the assumed one second burst
+        # Melee weapons do not have burst DPS
+        if self._weapon.weapon_slot == CompatibilityTags.MELEE:
+            return D("0.00").quantize(D("1.00"))
+        if self.num_shots_per_mag >= self.effective_fire_rate:
+            return (self.real_average_hit_no_armor * self.effective_fire_rate).quantize(D("1.00"))
+        else:
+            return (self.real_average_hit_no_armor * self.num_shots_per_mag).quantize(D("1.00"))
 
     @property
     def real_burst_dps_max_armor(self) -> D:
-        return (self.real_average_hit_max_armor * self.effective_fire_rate).quantize(D("1.00"))
+        # This solution is only accurate if we assume that you do not reload and fire another shot within the assumed one second burst
+        # Melee weapons do not have burst DPS
+        if self._weapon.weapon_slot == CompatibilityTags.MELEE:
+            return D("0.00").quantize(D("1.00"))
+        if self.num_shots_per_mag >= self.effective_fire_rate:
+            return (self.real_average_hit_max_armor * self.effective_fire_rate).quantize(D("1.00"))
+        else:
+            return (self.real_average_hit_max_armor * self.num_shots_per_mag).quantize(D("1.00"))
 
     @property
     def arsenal_sustained_dps(self) -> D:
-        return (self.arsenal_burst_dps * self.proportion_time_spent_shooting_vs_reloading).quantize(
-            D("1.00")
-        )
+        # TODO: This does not include average base combo length for melee weapons, likely add this when mods are added.
+        if self._weapon.weapon_slot == CompatibilityTags.MELEE:
+            return (self.arsenal_average_hit * self.final_attack_speed).quantize(D("1.00"))
+        else:
+            return (
+                self.arsenal_burst_dps * self.proportion_time_spent_shooting_vs_reloading
+            ).quantize(D("1.00"))
 
     @property
     def real_sustained_dps_no_armor(self) -> D:
-        return (
-            self.real_burst_dps_no_armor * self.proportion_time_spent_shooting_vs_reloading
-        ).quantize(D("1.00"))
+        # TODO: This does not include average base combo length for melee weapons, likely add this when mods are added.
+        if self._weapon.weapon_slot == CompatibilityTags.MELEE:
+            return (self.real_average_hit_no_armor * self.final_attack_speed).quantize(D("1.00"))
+        else:
+            return (
+                self.real_burst_dps_no_armor * self.proportion_time_spent_shooting_vs_reloading
+            ).quantize(D("1.00"))
 
     @property
     def real_sustained_dps_max_armor(self) -> D:
-        return (
-            self.real_burst_dps_max_armor * self.proportion_time_spent_shooting_vs_reloading
-        ).quantize(D("1.00"))
+        # TODO: This does not include average base combo length for melee weapons, likely add this when mods are added.
+        if self._weapon.weapon_slot == CompatibilityTags.MELEE:
+            return (self.real_average_hit_max_armor * self.final_attack_speed).quantize(D("1.00"))
+        else:
+            return (
+                self.real_burst_dps_max_armor * self.proportion_time_spent_shooting_vs_reloading
+            ).quantize(D("1.00"))

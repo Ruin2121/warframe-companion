@@ -28,3 +28,4 @@ class TriggerTypes(Enum):
     CHARGE_NO_DELAYED = "Charge | No Quickshot | Delayed Auto-Release"
 
     UNKNOWN = "Unknown"
+    NA = "N/A"
