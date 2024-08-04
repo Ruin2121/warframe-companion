@@ -8,10 +8,10 @@ class CompatibilityTags(Enum):
     This includes item slots, mod types, etc.
     """
 
+    # Related to Primary Slot Weapons
     PRIMARY = "Primary"
     RIFLE = "Rifle"
     SHOTGUN = "Shotgun"
-    SHOTGUN_SIDEARM = "Shotgun Sidearm"
     ASSAULT_RIFLE = "Assault Rifle"
     BOW = "Bow"
     SNIPER = "Sniper"
@@ -19,11 +19,16 @@ class CompatibilityTags(Enum):
     CROSSBOW = "Crossbow"
     LONGBOW = "Longbow"
     SPEARGUN = "Speargun"
+
+    # Related to Secondary Slot Weapons
     SECONDARY = "Secondary"
     PISTOL = "Pistol"
     DUAL_PISTOLS = "Dual Pistols"
     THROWN = "Thrown"
     TOME = "Tome"
+    SHOTGUN_SIDEARM = "Shotgun Sidearm"
+
+    # Related to Melee Slot Weapons
     MELEE = "Melee"
     ASSAULT_SAW = "Assault Saw"
     BLADE_AND_WHIP = "Blade and Whip"
@@ -52,21 +57,27 @@ class CompatibilityTags(Enum):
     TONFA = "Tonfa"
     WARFANS = "Warfans"
     WHIP = "Whip"
+
+    # Related to Arch-weapons
     ARCHGUN = "Archgun"
     ARCHMELEE = "Archmelee"
-    ROBOTIC_WEAPON = "Robotic Weapon"
-    EXALTED_WEAPON = "Exalted Weapon"
+
+    # Related to Warframes
     PARAZON = "Parazon"
+    EXALTED_WEAPON = "Exalted Weapon"
+
+    # Related to Companions
     COMPANION = "Companion"
     BEAST = "Beast"
-    ROBOTIC_COMPANION = "Robotic Companion"
     KUBROW = "Kubrow"
     KAVAT = "Kavat"
+    ROBOTIC_COMPANION = "Robotic Companion"
+    ROBOTIC_WEAPON = "Robotic Weapon"
     HOUND = "Hound"
     MOA = "Moa"
     SENTINEL = "Sentinel"
 
-    # True Compatibility Tags
+    # Secondary Compatibility Tags
     ASSAULT_AMMO = "Assault Ammo"
     SNIPER_AMMO = "Sniper Ammo"
     PROJECTILE = "Projectile"
