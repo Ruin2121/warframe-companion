@@ -25,3 +25,4 @@ class Weapons(Enum):
     FURAX = "Furax"
     SKANA = "Skana"
     BO = "Bo"
+    CRONUS = "Cronus"
