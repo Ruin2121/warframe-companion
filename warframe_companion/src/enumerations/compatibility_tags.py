@@ -74,3 +74,4 @@ class CompatibilityTags(Enum):
     SECONDARYSHOTGUN = "Secondary Shotgun"
     DUAL_SWORDS_STANCE = "Dual Swords Stance"
     FIST_STANCE = "Fist Stance"
+    SWORDS_STANCE = "Swords Stance"
